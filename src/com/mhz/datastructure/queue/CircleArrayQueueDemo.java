@@ -1,9 +1,5 @@
 package com.mhz.datastructure.queue;
 
-import com.sun.org.apache.xpath.internal.axes.OneStepIteratorForward;
-import sun.rmi.runtime.Log;
-
-import java.time.OffsetDateTime;
 import java.util.Scanner;
 
 //对前面的数据模拟队列的优化, 充分利用数据, 因此将数据看做是一个环形的(通过取模的方式来实现即可)
