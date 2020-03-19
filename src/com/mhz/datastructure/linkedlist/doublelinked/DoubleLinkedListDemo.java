@@ -13,10 +13,10 @@ public class DoubleLinkedListDemo {
         HeroNode2 hero3 = new HeroNode2(3, "吴用", "智多星");
         HeroNode2 hero4 = new HeroNode2(4, "林冲", "豹子头");
         DoubleLinkedList doubleLinkedList = new DoubleLinkedList();
-        doubleLinkedList.add(hero1);
-        doubleLinkedList.add(hero2);
-        doubleLinkedList.add(hero3);
-        doubleLinkedList.add(hero4);
+        doubleLinkedList.addByOrder(hero1);
+        doubleLinkedList.addByOrder(hero4);
+        doubleLinkedList.addByOrder(hero3);
+        doubleLinkedList.addByOrder(hero2);
         // 显示一把
         doubleLinkedList.showList();
 
@@ -48,18 +48,34 @@ class  DoubleLinkedList{
      * @param heroNode2
      */
     public void addByOrder(HeroNode2 heroNode2) {
-        HeroNode2 temp = head.next;
+        HeroNode2 temp = head;
         boolean flag = false;
         while (true) {
-            if (temp == null) {
+            if (temp.next == null) {
                 // 到链表的最后 直接返回
                 break;
             }
-            if (temp.no == heroNode2.no) {
-                // 找到了
-                System.out.printf("编号已经存在%d", heroNode2.no);
+            if (temp.next.no > heroNode2.no) {
                 break;
             }
+            if (temp.next.no == heroNode2.no) {
+                //编号存在 直接返回了
+                flag = true;
+                break;
+            }
+            temp = temp.next;
+
+        }
+        // 必须要在while循环的后面
+        if (flag) {
+            System.out.printf("编号已经存在%d", heroNode2.no);
+        } else {
+            heroNode2.pre = temp;
+            if (temp.next != null) {
+                temp.next.pre = heroNode2;
+            }
+            heroNode2.next = temp.next;
+            temp.next = heroNode2;
         }
     }
 
