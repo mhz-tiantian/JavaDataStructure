@@ -1,6 +1,5 @@
 package com.mhz.datastructure.stack;
 
-import com.sun.xml.internal.ws.client.BindingProviderProperties;
 
 import java.util.Scanner;
 
