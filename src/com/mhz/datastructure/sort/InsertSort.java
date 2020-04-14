@@ -30,7 +30,7 @@ public class InsertSort {
         String date1Str = format.format(date1);
         System.out.println("排序前的时间是=" + date1Str);
 
-        insertSort(getRandomArray(8000000));
+        insertSort(getRandomArray(80000));
 
         Date date2 = new Date();
         SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
