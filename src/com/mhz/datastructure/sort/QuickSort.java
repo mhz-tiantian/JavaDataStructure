@@ -25,6 +25,7 @@ public class QuickSort {
 
 
     private static int partition(int[] a, int low, int high) {
+        // https://blog.csdn.net/qq_36462955/article/details/82834839
         int pivot = a[low];
 
         while (low < high) {
