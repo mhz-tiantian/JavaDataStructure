@@ -1,8 +1,6 @@
 package com.mhz.datastructure.sort;
 
-import java.text.SimpleDateFormat;
 import java.util.Arrays;
-import java.util.Date;
 
 /**
  * 选择排序
@@ -104,6 +102,14 @@ public class SelectSort {
         // 1 ,34,119 101
         System.out.println(Arrays.toString(arr));
 
+
+
+
+
+
+
+
+
         // 第二轮
         minIndex = 1;
         min = arr[1];
@@ -124,6 +130,12 @@ public class SelectSort {
         System.out.println("第二轮后=-----");
         // 1 ,34,119 101
         System.out.println(Arrays.toString(arr));
+
+
+
+
+
+
 
 
         // 第三轮
