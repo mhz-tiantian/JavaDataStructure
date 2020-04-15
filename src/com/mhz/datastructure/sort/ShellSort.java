@@ -1,6 +1,8 @@
 package com.mhz.datastructure.sort;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 /**
  * 希尔排序
@@ -35,20 +37,66 @@ public class ShellSort {
     public static void main(String[] agrs) {
         int[] arr = {8, 9, 1, 7, 2, 3, 5, 4, 6, 0};
 
-        shellSortExchangeInfer(arr);
+//        shellSortExchangeInfer(arr);
 
-        shellSortExchange(arr);
+//        shellSortExchange(arr);
+
+        Date date1 = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date1Str = format.format(date1);
+        System.out.println("排序前的时间是=" + date1Str);
+
+        //8千万的数据, 大概30多秒  这速度
+        shellSortGression(getRandomArray(8000000));
+
+//        shellSortExchange(getRandomArray(800000000));
+
+        Date date2 = new Date();
+        SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String date2Str = format2.format(date2);
+        System.out.println("排序后的时间是=" + date2Str);
 
     }
 
 
     /**
-     *  希尔排序, 移位方式
+     *  获得随机的数据
+     * @param maxSize
+     * @return
+     */
+    public static int[] getRandomArray(int maxSize) {
+        int[] arr = new int[maxSize];
+        for (int i = 0; i < maxSize; i++) {
+            // 随机生成[0,8000000]之间的数
+            arr[i] = (int) (Math.random() * 8000000);
+        }
+        return arr;
+    }
+
+
+    /**
+     *  希尔排序, 移位方式(插入的方式, 找到temp插入的位置)
      * @param arr
      */
     public static void shellSortGression(int[] arr) {
         int temp = 0;
-        // 增量gap 并
+        // 增量gap 并逐步的缩小增量
+        for (int gap = arr.length / 2; gap > 0; gap = gap / 2) {
+            for (int i = gap; i < arr.length; i++) {
+                int j = i;
+                temp = arr[j];
+                while ((j - gap >= 0) && temp < arr[j - gap]) {
+                    arr[j] = arr[j - gap];
+                    j -= gap;
+
+                }
+                //当退出 while 后，就给 temp 找到插入的位置
+                arr[j] = temp;
+            }
+        }
+//        System.out.println("希尔排序后===" + Arrays.toString(arr));
+
+
     }
 
 
