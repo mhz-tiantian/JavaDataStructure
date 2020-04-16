@@ -1,7 +1,5 @@
 package com.mhz.datastructure.sort;
 
-import sun.rmi.runtime.Log;
-
 import java.util.Arrays;
 
 /**
@@ -19,10 +17,93 @@ public class QuickSort {
     public static void main(String[] agrs) {
 
         int[] arr = {-9, 78, 0, 23, -567, 70, -1, 900, 4561};
-        quickSort(arr, 0, arr.length - 1);
+//        quickSort(arr, 0, arr.length - 1);
+//        System.out.println("快速排序后的数组为===" + Arrays.toString(arr));
+
+        quickSortXiaoMa(arr, 0, arr.length);
+
         System.out.println("快速排序后的数组为===" + Arrays.toString(arr));
     }
 
+
+    /**
+     * 快速排序 ,小马哥教育讲的 [begin, end)
+     *
+     * @param arr   数据
+     * @param begin 开始的下标
+     * @param end   结果的下标 后一位
+     */
+    public static void quickSortXiaoMa(int[] arr, int begin, int end) {
+        // 扫描剩下的元素 为1的是直接返回
+        if (end - begin < 2) {
+            return;
+        }
+        // 返回
+        int mid = pivotIndex(arr, begin, end);
+        quickSortXiaoMa(arr, begin, mid);
+        quickSortXiaoMa(arr, mid + 1, end);
+
+    }
+
+    /**
+     * 确定轴点位置 的下标
+     *
+     * @param arr
+     * @param begin
+     * @param end
+     * @return 确定中缀位置 的下标
+     */
+    private static int pivotIndex(int[] arr, int begin, int end) {
+        // 先把 轴点元素的值 保存到一个变量里
+        int pivot = arr[begin];
+        // 把最后的下标前移一位, 指向最后的下标
+        end--;
+        while (begin < end) {
+            while (begin < end) {
+                //右边的元素大于 轴点的元素, 直接前移一位
+                if (arr[end] > pivot) {
+                    end--;
+                } else {
+                    // 右边的元素小于或者等于轴点元素, 交换, 就把左边的指针指向下一个元素
+                    // 如果左边的指针不动的话, 它其实值指向了已经交换过的元素,
+                    // 还有就是不利用下次的交换, 所以一定要++
+                    // 这样就造成了, 没有必要的一次对比 ,
+                    // 交换完成以后, 改变指针移动的方向  break了, 执行下面的代码去了
+                    arr[begin] = arr[end];
+                    begin++;
+                    break;
+                }
+            }
+            while (begin < end) {
+                //左边的元素小于轴点元素的时候,
+                // 直接左指针向前移动
+                if (arr[begin] < pivot) {
+                    begin++;
+                } else {
+                    // 左边的元素 大于或者等于轴点元素的时候, 交换
+                    // 左边的元素放到当前end处, 然后end--
+                    arr[end] = arr[begin];
+                    end--;
+                    break;
+                }
+            }
+        }
+
+        // 把轴点元素,放入到最终的位置上
+        arr[begin] = pivot;
+        // 返回当前轴点元素的下标
+        return begin;
+    }
+
+
+    /**
+     * 快速排序 网上的代码
+     *
+     * @param a
+     * @param low
+     * @param high
+     * @return
+     */
 
     private static int partition(int[] a, int low, int high) {
         // https://blog.csdn.net/qq_36462955/article/details/82834839
@@ -54,7 +135,13 @@ public class QuickSort {
         }
     }
 
-
+    /**
+     * 韩老师教的快速排序的代码(有bug)
+     *
+     * @param arr
+     * @param left
+     * @param right
+     */
     public static void quickSortHan(int[] arr, int left, int right) {
         int l = left;// 左下标
         int r = right;// 右下标
