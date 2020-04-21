@@ -24,7 +24,7 @@ public class MergeSort {
         String date1Str = format.format(date1);
         System.out.println("排序前的时间是=" + date1Str);
 //        int[] arr = {-9, 78, 0, 23, -567, 70, -1, 900, 4561};
-        int[] arr = getRandomArray(80000000);
+        int[] arr = getRandomArray(800000);
         leftArray = new int[arr.length / 2];
         mergeSort(arr, 0, arr.length);
 

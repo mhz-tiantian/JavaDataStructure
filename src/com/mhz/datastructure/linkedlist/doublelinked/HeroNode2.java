@@ -1,7 +1,5 @@
 package com.mhz.datastructure.linkedlist.doublelinked;
 
-import com.mhz.datastructure.linkedlist.HeroNode;
-
 public class HeroNode2 {
 
     public int no;
