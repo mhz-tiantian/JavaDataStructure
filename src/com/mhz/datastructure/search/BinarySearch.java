@@ -30,6 +30,7 @@ import java.util.List;
 public class BinarySearch {
 
     public static void main(String[] args) {
+        List<String> arrayList = new ArrayList<>();
         int[] arr = {1, 8, 10, 1000, 1000, 1001, 1234};
 
 //        int index = binarySearch(arr, 1234, 0, arr.length);
