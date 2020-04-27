@@ -1,7 +1,5 @@
 package com.mhz.datastructure.search;
 
-import com.sun.org.apache.xpath.internal.axes.OneStepIteratorForward;
-
 /**
  * 插值查找
  * 原理:
